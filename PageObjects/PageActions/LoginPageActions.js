@@ -1,7 +1,7 @@
 const loginElementLocators = require('../PageElements/LoginPageElements.json')
 export class loginPageElements{
-
-    preCheckInLogin(userName, password){
+    
+    happyLogin(userName, password){
         Cypress.on('uncaught:exception', (err, runnable) => {
             // returning false here prevents Cypress from
             // failing the test
@@ -19,6 +19,8 @@ export class loginPageElements{
             .should('have.text', 'Welcome Waqas')
         cy.url().should('include', '/dashboard-new')
         return
+    }
+    invalidLogin(){
 
     }
 

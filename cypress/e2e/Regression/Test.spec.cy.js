@@ -16,8 +16,8 @@ describe('Pre Check-In Process', () => {
     cy.clearAllCookies({ log: true })
     cy.clearAllLocalStorage('your item', { log: true })
     cy.clearAllSessionStorage()
-    Login_Elements.preCheckInLogin('automation9462@gmail.com', 'Boring321')
-    Booking_Elements.preCheckInAddBooking()
+    Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
+    Booking_Elements.happyAddBooking()
     Booking_Elements.guestName()
   })
  
@@ -35,7 +35,7 @@ describe('Pre Check-In Process', () => {
       cy.get('.text-md > span').should('contain', 'Please start Pre Check-in')
       cy.wait(3000)     
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
-      PreCheckIn_Elements.basicInfo()
+      PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
       cy.get('[data-test="questionnaireTitle"]').should('have.text', 'Some Importent Questions!')
       // Enter Note it's mandatory field
@@ -64,7 +64,7 @@ describe('Pre Check-In Process', () => {
       cy.get('.text-md > span').should('contain', 'Please start Pre Check-in')
       cy.wait(3000)     
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
-      PreCheckIn_Elements.basicInfo()
+      PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
       cy.get('[data-test="questionnaireTitle"]').should('have.text', 'Some Importent Questions!')
       // Enter Note it's mandatory field

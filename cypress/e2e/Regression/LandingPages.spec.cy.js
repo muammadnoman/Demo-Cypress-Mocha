@@ -16,8 +16,8 @@ describe('Pre Check-In Process', () => {
     cy.clearAllCookies({ log: true })
     cy.clearAllLocalStorage('your item', { log: true })
     cy.clearAllSessionStorage()
-    Login_Elements.preCheckInLogin('automation9462@gmail.com', 'Boring321')
-    Booking_Elements.preCheckInAddBooking()
+    Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
+    Booking_Elements.happyAddBooking()
     Booking_Elements.guestName()
   })
  
@@ -38,25 +38,25 @@ describe('Pre Check-In Process', () => {
       cy.get('#bookingID') 
       .invoke('val') 
       .then((text) => {
-        const bookingID = text; 
+        const bookingID = text 
         cy.wrap(bookingID).should('eq', bookingID)
         // Will get and store Source value in a variable
         cy.get('#source') 
         .invoke('val') 
         .then((text) => {
-          const source = text; 
+          const source = text 
           cy.wrap(source).should('eq', source)
           // Will get and store CheckIn Date in a variable
           cy.get('#checkinDate') 
           .invoke('val') 
           .then((text) => {
-            const checkInDate = text; 
+            const checkInDate = text 
             cy.wrap(checkInDate).should('eq', checkInDate)
             // Will get and store CheckOut Date in a variable
             cy.get('#checkoutDate')
             .invoke('val') 
             .then((text) => {
-              const checkOutDate = text; 
+              const checkOutDate = text 
               cy.wrap(checkOutDate).should('eq', checkOutDate)
               // Now user will go to Payments and Copy the Amount 
               cy.get('#tab_general-payment-detail > .mt-sm-15')
@@ -65,7 +65,7 @@ describe('Pre Check-In Process', () => {
               cy.wait(2000)
               cy.get('.col-md-4 > .table-responsive > .table > :nth-child(1) > .text-right') 
               .then($text => {
-                const tAmount = $text.text(); 
+                const tAmount = $text.text() 
                 cy.log(tAmount)
                 // User will logout from the portal and will open CheckIn link
                 Login_Elements.profileIcon()
@@ -178,7 +178,7 @@ describe('Pre Check-In Process', () => {
       cy.get('.text-md > span').should('contain', 'Please start Pre Check-in')
       cy.wait(3000)     
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
-      PreCheckIn_Elements.basicInfo()
+      PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
       PreCheckIn_Elements.questionnariesValidation()
     })
@@ -197,7 +197,7 @@ describe('Pre Check-In Process', () => {
       cy.get('.text-md > span').should('contain', 'Please start Pre Check-in')
       cy.wait(3000)     
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
-      PreCheckIn_Elements.basicInfo()
+      PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
       cy.get('[data-test="questionnaireTitle"]').should('have.text', 'Some Importent Questions!')
       // Enter Note it's mandatory field

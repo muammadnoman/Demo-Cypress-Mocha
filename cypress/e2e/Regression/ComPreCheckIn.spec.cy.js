@@ -15,8 +15,8 @@ describe('Pre Check-In Process', () => {
     cy.clearAllCookies({ log: true })
     cy.clearAllLocalStorage('your item', { log: true })
     cy.clearAllSessionStorage()
-    Login_Elements.preCheckInLogin('automation9462@gmail.com', 'Boring321')
-    Booking_Elements.preCheckInAddBooking()
+    Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
+    Booking_Elements.happyAddBooking()
     Booking_Elements.guestName()
   })
 
@@ -128,7 +128,7 @@ describe('Pre Check-In Process', () => {
                                 .then((text) => {
                                   const emailAddress = text; 
                                   cy.wrap(emailAddress).should('eq', emailText)
-                                  PreCheckIn_Elements.basicInfo()
+                                  PreCheckIn_Elements.basicInfoVerification()
                                   PreCheckIn_Elements.creditCard()
                                   PreCheckIn_Elements.questionnaires()
                                   PreCheckIn_Elements.arrivingByCar()
@@ -320,7 +320,7 @@ describe('Pre Check-In Process', () => {
                                 .then((text) => {
                                   const emailAddress = text; 
                                   cy.wrap(emailAddress).should('eq', emailText)
-                                  PreCheckIn_Elements.basicInfo()
+                                  PreCheckIn_Elements.basicInfoVerification()
                                   PreCheckIn_Elements.creditCard()
                                   PreCheckIn_Elements.questionnaires()
                                   PreCheckIn_Elements.arrivingByOther()

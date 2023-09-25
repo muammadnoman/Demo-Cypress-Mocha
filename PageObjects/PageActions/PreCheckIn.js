@@ -3,7 +3,7 @@ const bookingElementLocators = require('../PageElements/BookingPageElements.json
 const precheckinElementLocators = require('../PageElements/PreCheckInPageElement.json')
 export class precheckinPageElements {
 
-    basicInfo(){
+    basicInfoVerification(){
         cy.get('.iti__selected-flag').click()
         cy.get('#iti-0__item-pk').contains('Pakistan (‫پاکستان‬‎)')
             .type('{enter}3047557094') 
@@ -80,8 +80,7 @@ export class precheckinPageElements {
             .should('have.attr', 'placeholder', 'Zip code').clear().type('54000').wait(2000)
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
         cy.get('.mb-4 > .form-section-title > h4').should('contain', 'PAYMENT SUMMARY')
-    }
-    
+    }   
     creditCard(){
         cy.get('.mb-4 > .form-section-title > h4').should('contain', 'PAYMENT SUMMARY')
         cy.get(precheckinElementLocators.PreCheckInPageLocators.credit_card).within(() => {
@@ -89,10 +88,9 @@ export class precheckinPageElements {
             cy.fillElementsInput('cardExpiry', '1025'); // MMYY
             cy.fillElementsInput('cardCvc', '123');
             cy.fillElementsInput('postalCode', '90210');
-          });
+          })
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
     }
-
     questionnaires(){
         cy.get('[data-test="questionnaireTitle"]').should('have.text', 'Some Importent Questions!')
         cy.get('[data-test="questionnaireDesc"]').should('have.text', 'Please answer the below Questions.')
@@ -180,7 +178,6 @@ export class precheckinPageElements {
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
         cy.get('div[class="form-section-title mb-2"] h4').should('have.text', 'ARRIVAL INFORMATION')
     }
-
 // Arrival Information Page Methods
     arrivingByCar(){
         cy.get('div[class="form-section-title mb-2"] h4').should('have.text', 'ARRIVAL INFORMATION')
@@ -230,7 +227,6 @@ export class precheckinPageElements {
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
         cy.get('div[class="form-section-title"] h4').should('have.text', '\n                                Upload\n                                copy of valid Driver License\n                            ')
     }
-
 // Document verification
     verification(){
         cy.get('div[class="form-section-title"] h4').should('have.text', '\n                                Upload\n                                copy of valid Driver License\n                            ')
@@ -352,7 +348,6 @@ export class precheckinPageElements {
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
         cy.get('div[class="gp-box gp-box-of-inner-pages"] p:nth-child(1)').should('have.text', 'Take a selfie to authenticate your identity')
     }
-
     takeSelfy(){
         cy.get('div[class="gp-box gp-box-of-inner-pages"] p:nth-child(1)').should('have.text', 'Take a selfie to authenticate your identity')
         cy.wait(3000)
@@ -360,7 +355,6 @@ export class precheckinPageElements {
         cy.wait(2000)
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
     }
-
     guestVerify(){
         cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)').should('have.text', 'Guest Details\n                        1/3')
         cy.get('table[class="table guest-table"] h6[class="guest-name"]').should('have.text', 'QA Tester')
@@ -385,7 +379,6 @@ export class precheckinPageElements {
         cy.get(':nth-child(3) > :nth-child(1) > .guest-name').should('have.text', 'Test Guest')
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
     }
-
     addService1(){
         cy.get('div[class="gp-inset"] div:nth-child(1) div:nth-child(2) div:nth-child(2) h3:nth-child(1) span:nth-child(1)').should('have.text', 'Test Upshell')
         cy.xpath('//span[normalize-space()="E-bike Rental"]').should('have.text', 'E-bike Rental')
@@ -477,16 +470,16 @@ export class precheckinPageElements {
     }
     signatureValidation(){
         cy.get('canvas').then($canvas => {
-            const canvasWidth = $canvas.width();
-            const canvasHeight = $canvas.height();
-            const canvasCenterX = canvasWidth / 2;
-            const canvasCenterY = canvasHeight / 2;
-            const buttonX = canvasCenterX + ( ( canvasCenterX / 3 ) * 2 );
-            const buttonY = canvasCenterY + ( ( canvasCenterY / 3 ) * 2 );
+            const canvasWidth = $canvas.width()
+            const canvasHeight = $canvas.height()
+            const canvasCenterX = canvasWidth / 2
+            const canvasCenterY = canvasHeight / 2
+            const buttonX = canvasCenterX + ( ( canvasCenterX / 3 ) * 2 )
+            const buttonY = canvasCenterY + ( ( canvasCenterY / 3 ) * 2 )
             cy.wrap($canvas)
               .scrollIntoView()
               .click(buttonX, buttonY)
-          });
+            })
         cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})
         cy.get('.page-title').should('contain', 'Welcome')
         cy.get('h1[class="page-title"] span[class="notranslate"]').should('contain', 'QA')

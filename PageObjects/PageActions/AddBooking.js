@@ -2,7 +2,7 @@
 const bookingElementLocators = require('../PageElements/BookingPageElements.json')
 export class bookingPageElements{
 
-    preCheckInAddBooking(){
+    happyAddBooking(){
         cy.get('a[class="nav-item nav-link"]')
             .contains('Bookings')
         cy.get(bookingElementLocators.BookingPageLocators.booking_tab).click()
