@@ -1,0 +1,23 @@
+image: cypress/browsers:node-18.16.0-chrome-114.0.5735.133-1-ff-114.0.2-edge-114.0.1823.51-1
+
+definitions:
+  caches:
+    npm: $HOME/.npm
+    cypress: $HOME/.cache/Cypress
+
+pipelines:
+  custom:
+    cypress-night-testing:
+      - step:
+          name: Run cypress tests
+          caches:
+            - node
+            - npm
+            - cypress
+          script:
+            # install dependencies
+            - npm ci
+            # start the server in the background
+            - npm run start &
+            # run Cypress tests in Firefox
+            - npx cypress run --browser firefox
