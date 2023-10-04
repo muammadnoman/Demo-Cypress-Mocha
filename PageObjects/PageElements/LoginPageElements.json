@@ -1,0 +1,11 @@
+{
+
+    "LoginPageLocators": {
+
+        "login_button": "a[href='https://master.chargeautomation.com/login']",
+        "username_text": "input[name='email']",
+        "Password_text": "input[name='password']",
+        "login_user": "#loginbtn",
+        "profile_icon": "#nav_prof_u-name"
+    }
+}

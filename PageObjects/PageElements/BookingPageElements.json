@@ -1,0 +1,26 @@
+{
+
+    "BookingPageLocators": {
+        "booking_tab": "a[class='nav-item nav-link']",
+        "add_booking": "#add_booking_button",
+        "select_property": "body > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > select:nth-child(2)",
+        "date_picker": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(2) > :nth-child(1) > .form-group > .custom-date-box",
+        "booking_source": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(2) > :nth-child(2) > .form-group > #booking_source",
+        "reservation_status": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(3) > :nth-child(1) > .form-group > #reservation_status",
+        "booking_amount": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(3) > :nth-child(2) > .form-group > #total_booking_amount",
+        "enter_note": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > .mt-1 > .col-md-12 > .form-group > div > #bookingNotes",
+        "first_name": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(1) > .form-group > #first_name",
+        "last_name": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(2) > .form-group > #last_name",
+        "phone_number": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(3) > .form-group > .custom-phone-input > .iti > .iti__flag-container > .iti__selected-flag > .iti__arrow",
+        "email_id": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(4) > .form-group > #email",
+        "adult_count": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(5) > .form-group > #num_adults",
+        "Child_count": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(6) > .form-group > #num_child",
+        "select_nationality": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > #accordion-booking-booker > .card > #accordion-booking-booker-section > .card-body > .row > :nth-child(8) > .form-group > #nationality",
+        "save_changes": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > .modal-footer > .btn-success",
+        "last_date": ":nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(2) > :nth-child(1) > .form-group > .custom-date-box",
+        "guest_name": "#single_booking_box-outer-71672 > .card-pane > .for-booking-list-page-only-outer > .for-booking-list-page-only-inner > :nth-child(2) > :nth-child(2) > .guest-name > [title='QA Tester']",
+        "booking_dots": ""
+
+    }
+
+}
