@@ -1,14 +1,20 @@
 /// <reference types ="Cypress" />
 
 import { bookingPageElements } from "../../../PageObjects/PageActions/AddBooking"
+<<<<<<< HEAD
 import { landingPagesElements } from "../../../PageObjects/PageActions/LandingPages"
+=======
+>>>>>>> master
 import { loginPageElements } from "../../../PageObjects/PageActions/LoginPageActions"
 import { precheckinPageElements } from "../../../PageObjects/PageActions/PreCheckIn"
 
   const Login_Elements = new loginPageElements
   const Booking_Elements = new bookingPageElements
   const PreCheckIn_Elements = new precheckinPageElements
+<<<<<<< HEAD
   const LandingPages_Elements = new landingPagesElements
+=======
+>>>>>>> master
 
 describe('Pre Check-In Process', () => {
   
@@ -20,9 +26,16 @@ describe('Pre Check-In Process', () => {
     cy.clearAllSessionStorage()
     Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
     Booking_Elements.happyAddBooking()
+<<<<<<< HEAD
   })
  
   xit('CA_PCW_01 > Validate pre-checkin welcome page', () => {
+=======
+    Booking_Elements.guestName()
+  })
+ 
+  it('CA_PCW_01 > Validate pre-checkin welcome page', () => {
+>>>>>>> master
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -112,7 +125,11 @@ describe('Pre Check-In Process', () => {
       })            
     })
   })
+<<<<<<< HEAD
   xit('CA_PCW_02 > Validate basic info page field level validations and prefilled fields', () => {
+=======
+  it('CA_PCW_02 > Validate basic info page field level validations and prefilled fields', () => {
+>>>>>>> master
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -158,14 +175,22 @@ describe('Pre Check-In Process', () => {
             .then((text) => {
               const emailAddress = text; 
               cy.wrap(emailAddress).should('eq', emailText) 
+<<<<<<< HEAD
               LandingPages_Elements.basicInfoValidation()
+=======
+              PreCheckIn_Elements.basicInfoValidation()                             
+>>>>>>> master
             })
           })
         })
       })
     })   
   })   
+<<<<<<< HEAD
   xit('CA_PCW_03 > Validate the questionnier step', () => {
+=======
+  it('CA_PCW_03 > Validate the questionnier step', () => {
+>>>>>>> master
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -181,10 +206,17 @@ describe('Pre Check-In Process', () => {
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
       PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
+<<<<<<< HEAD
       LandingPages_Elements.questionnariesValidation()
     })
   })
   xit('CA_PCW_04 > Validate the arrival step', () => {
+=======
+      PreCheckIn_Elements.questionnariesValidation()
+    })
+  })
+  it('CA_PCW_04 > Validate the arrival step', () => {
+>>>>>>> master
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -205,6 +237,7 @@ describe('Pre Check-In Process', () => {
       cy.get('#question-103').should('have.attr', 'placeholder', 'Type your answer').clear().type('This is Automation Testing')
       cy.wait(3000)
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true}) 
+<<<<<<< HEAD
       LandingPages_Elements.arrivalByValidation()
       })
   })
@@ -265,5 +298,11 @@ describe('Pre Check-In Process', () => {
     LandingPages_Elements.changeMainGuest()
   })
 
+=======
+      PreCheckIn_Elements.arrivalByValidation()
+      })
+  })
+  
+>>>>>>> master
 }) 
 

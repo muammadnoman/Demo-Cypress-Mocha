@@ -49,12 +49,15 @@ export class bookingPageElements{
         })
         cy.reload(true)
         cy.scrollTo('top')
+<<<<<<< HEAD
         this.validateGuestName()
     }
     validateGuestName(){
         cy.xpath("(//span[@title='QA Tester'][normalize-space()='QA Tester'])[1]")
             .should('be.visible')
             .contains("QA Tester")                          
+=======
+>>>>>>> master
     }
     bookingDetail(){
         cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
@@ -169,7 +172,15 @@ export class bookingPageElements{
         //cy.get(':nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(2) > :nth-child(1) > .form-group > .custom-date-box').type('{downArrow}{enter}')
     }
 
+<<<<<<< HEAD
 
+=======
+    guestName(){
+        cy.xpath("(//span[@title='QA Tester'][normalize-space()='QA Tester'])[1]")
+            .should('be.visible')
+            .contains("QA Tester")                          
+    }
+>>>>>>> master
 
     
 

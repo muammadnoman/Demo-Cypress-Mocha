@@ -17,6 +17,10 @@ describe('Pre Check-In Process', () => {
     cy.clearAllSessionStorage()
     Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
     Booking_Elements.happyAddBooking()
+<<<<<<< HEAD
+=======
+    Booking_Elements.guestName()
+>>>>>>> master
   })
 
   it('Validate Complete Pre Check-In Process with Source PMS-No-PMS, using document as ID Card, Arrival by Car, Only available Guests and using all Services', () => {
@@ -127,6 +131,7 @@ describe('Pre Check-In Process', () => {
                                 .then((text) => {
                                   const emailAddress = text; 
                                   cy.wrap(emailAddress).should('eq', emailText)
+<<<<<<< HEAD
                                   PreCheckIn_Elements.arrivingByCar()
                                   // Guest Verification
                                   cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)')
@@ -189,6 +194,68 @@ describe('Pre Check-In Process', () => {
                                                     PreCheckIn_Elements.idDocValidation()
                                                   })
                                                 })
+=======
+                                  PreCheckIn_Elements.basicInfoVerification()
+                                  PreCheckIn_Elements.creditCard()
+                                  PreCheckIn_Elements.questionnaires()
+                                  PreCheckIn_Elements.arrivingByCar()
+                                  // Verification ID Card and Credit Card
+                                  PreCheckIn_Elements.verification()
+                                  PreCheckIn_Elements.idCardVerification()
+                                  PreCheckIn_Elements.creditCardImage()
+                                  PreCheckIn_Elements.takeSelfy()
+                                  PreCheckIn_Elements.guestVerify()
+                                  PreCheckIn_Elements.allAddServices()
+                                  // Validate Summary Page
+                                  cy.get('.page-title').should('contain', 'Your Summary')
+                                  cy.get('.mb-0.notranslate').should('contain', 'CA')
+                                  cy.wait(3000)
+                                  // Validate Source
+                                  cy.get('div[class="gp-property-dl small"] span')
+                                  .then(($sSource) => {
+                                    const mySumSource = $sSource.text().replace(/Booked with /g, '')
+                                    cy.log(mySumSource)
+                                    cy.wrap(mySumSource).should('eq', source)
+                                    // Validate Review Booking Detail
+                                    cy.get('div[class="col"] h4').should('contain', 'REVIEW BOOKING DETAILS')
+                                    cy.get('.col-md-12 > .row > :nth-child(1) > .gp-dl > dd')
+                                    .then(($sRefNo) => {
+                                      const myRefNo = $sRefNo.text()
+                                      cy.log(myRefNo)
+                                      cy.wrap(myRefNo).should('eq',bookingID)
+                                      cy.get(':nth-child(2) > .gp-dl > .notranslate')
+                                      .then(($sAmount) => {
+                                        const mySumAmount = $sAmount.text()
+                                        cy.log(mySumAmount)
+                                        cy.wrap(mySumAmount).should('eq',tAmount)
+                                        cy.get(':nth-child(3) > .gp-dl > .notranslate')
+                                        .then(($sCIn) => {
+                                          const myCheckInDate = $sCIn.text().replace(/,/g, '');
+                                          cy.log(myCheckInDate)
+                                          cy.wrap(myCheckInDate).should('eq', checkInDate)
+                                          cy.get('.col-md-12 > .row > :nth-child(4) > .gp-dl > .notranslate')
+                                          .then(($sCOut) => {
+                                            const myCheckOutDate = $sCOut.text().replace(/,/g, '');
+                                            cy.log(myCheckOutDate)
+                                            cy.wrap(myCheckOutDate).should('eq', checkOutDate)
+                                            // Validate Booking info
+                                            cy.get(':nth-child(4) > .row > :nth-child(1) > .gp-dl > dd')
+                                            .then($infoName => {
+                                              const myName = $infoName.text(); 
+                                              cy.log(myName)
+                                              cy.wrap(myName).should('eq', fName)
+                                              cy.get(':nth-child(5) > .gp-dl > dd')
+                                              .then($infoEmail => {
+                                                const myEmail = $infoEmail.text(); 
+                                                cy.log(myEmail)
+                                                cy.wrap(myEmail).should('eq', emailText)
+                                                PreCheckIn_Elements.contactInfo()
+                                                PreCheckIn_Elements.questionnairesValidation()
+                                                PreCheckIn_Elements.summaryArrivalByCar()
+                                                PreCheckIn_Elements.idDocValidation()
+                                                PreCheckIn_Elements.paymentMethodValidation()
+                                                PreCheckIn_Elements.signatureValidation()
+>>>>>>> master
                                               })
                                             })
                                           })
@@ -321,6 +388,19 @@ describe('Pre Check-In Process', () => {
                                 .then((text) => {
                                   const emailAddress = text; 
                                   cy.wrap(emailAddress).should('eq', emailText)
+<<<<<<< HEAD
+=======
+                                  PreCheckIn_Elements.basicInfoVerification()
+                                  PreCheckIn_Elements.creditCard()
+                                  PreCheckIn_Elements.questionnaires()
+                                  PreCheckIn_Elements.arrivingByOther()
+                                  // Verification ID Card and Credit Card
+                                  PreCheckIn_Elements.verification()
+                                  PreCheckIn_Elements.drivingLicenseVerification()
+                                  PreCheckIn_Elements.creditCardImage()
+                                  PreCheckIn_Elements.takeSelfy()
+                                  PreCheckIn_Elements.addNewGuestDetail()
+>>>>>>> master
                                   PreCheckIn_Elements.addService1()
                                   // Validate Summary Page
                                   cy.get('.page-title').should('contain', 'Your Summary')
@@ -365,7 +445,16 @@ describe('Pre Check-In Process', () => {
                                                 const myEmail = $infoEmail.text(); 
                                                 cy.log(myEmail)
                                                 cy.wrap(myEmail).should('eq', emailText)
+<<<<<<< HEAD
                                                 PreCheckIn_Elements.licenseDocValidation()
+=======
+                                                PreCheckIn_Elements.contactInfo()
+                                                PreCheckIn_Elements.questionnairesValidation()
+                                                PreCheckIn_Elements.summaryArrivalByOther()
+                                                PreCheckIn_Elements.licenseDocValidation()
+                                                PreCheckIn_Elements.paymentMethodValidation()
+                                                PreCheckIn_Elements.signatureValidation()
+>>>>>>> master
                                               })
                                             })
                                           })
