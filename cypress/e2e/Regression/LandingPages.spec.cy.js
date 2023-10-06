@@ -256,6 +256,14 @@ describe('Pre Check-In Process', () => {
     LandingPages_Elements.goToGuest()
     LandingPages_Elements.guestDetailValidations()
   })
+  it('CA_PCW_13 > Validate Edit Guest detail functionality', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.editGuestDetail()
+  })
+  it('CA_PCW_14 > Validate change Main guest functionality', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.changeMainGuest()
+  })
 
 }) 
 

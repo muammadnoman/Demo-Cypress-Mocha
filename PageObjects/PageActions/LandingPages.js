@@ -506,5 +506,50 @@ export class landingPagesElements {
         cy.get(':nth-child(3) > :nth-child(3) > .badge').should('contain', 'Completed')
         cy.get('h4 > .badge').should('contain', '2/3')
     }
-
+    editGuestDetail(){
+        this.addGuestDetail()
+        cy.wait(3000)
+        cy.get('.btn.btn-default.d-none.d-md-inline-block').click({force: true})
+        cy.get('h4 > .badge').should('contain', '2/3')
+        cy.get(':nth-child(3) > :nth-child(4) > .guest-actions > .guest-edit > div').click({force: true})
+        cy.get('#exampleModalLabel > span').should('contain', 'Test Guest').wait(3000)
+        cy.xpath('(//input[@id="6"])[1]').clear().type('SQAE Guest')
+         // UserName Generator
+         function generateUserName() {
+            let text = "";
+            let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            
+            for (let i = 0; i < 10; i++)
+            text += alphabet.charAt(Math.floor(Math.random() * alphabet.length))
+            return text;  
+          }
+        const generatedUserName = generateUserName()
+        cy.xpath('(//input[@id="1"])[1]')
+            .clear()
+            .type(generatedUserName + '@mailinator.com')
+        cy.get('button[class="btn btn-success btn-sm"]').click({force: true})
+        cy.get('.toast-message').invoke('text')
+        .then((resp) => {
+          expect(resp).to.equal('Data saved Successfully.')
+        })
+        cy.get(':nth-child(3) > :nth-child(1) > .guest-name').should('have.text', 'SQAE Guest')
+        cy.get(':nth-child(3) > :nth-child(2) > .guest-email').should('contain', generatedUserName + '@mailinator.com')
+        cy.get(':nth-child(3) > :nth-child(3) > .badge').should('contain', 'Completed')
+        cy.get('h4 > .badge').should('contain', '2/3')
+    }
+    changeMainGuest(){
+        this.addGuestDetail()
+        cy.wait(3000)
+        cy.get('.btn.btn-default.d-none.d-md-inline-block').click({force: true})
+        cy.get('h4 > .badge').should('contain', '2/3')
+        cy.get(':nth-child(3) > :nth-child(4) > .guest-actions > .guest-edit > div').click({force: true})
+        cy.get('.toggle-switch').click().wait(3000)
+        cy.get('button[class="btn btn-success btn-sm"]').click({force: true})
+        cy.get('.toast-message').invoke('text')
+        .then((resp) => {
+          expect(resp).to.equal('Data saved Successfully.')
+        })
+        cy.get('.table > :nth-child(2) > :nth-child(1) > .guest-name').should('have.text', 'Test Guest')
+        cy.get(':nth-child(2) > :nth-child(3) > .badge').should('contain', 'Completed')
+    }
 }
