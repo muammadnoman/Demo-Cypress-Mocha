@@ -49,6 +49,12 @@ export class bookingPageElements{
         })
         cy.reload(true)
         cy.scrollTo('top')
+        this.validateGuestName()
+    }
+    validateGuestName(){
+        cy.xpath("(//span[@title='QA Tester'][normalize-space()='QA Tester'])[1]")
+            .should('be.visible')
+            .contains("QA Tester")                          
     }
     bookingDetail(){
         cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
@@ -59,7 +65,6 @@ export class bookingPageElements{
         .click({force: true})
         cy.wait(3000)
     }
-
     bookingTab(){
         cy.get('a[class="nav-item nav-link "]')
             .contains('Bookings')
@@ -162,7 +167,6 @@ export class bookingPageElements{
         cy.get('#airbnb-style-datepicker-wrapper-Rp4Ly > .asd__inner-wrapper > :nth-child(1) > :nth-child(2)').first().click({ force: true })
         //cy.get(':nth-child(1) > #add_edit_booking_modal > .modal-dialog > .modal-content > #bookings-tabContent > .col-sm-12 > :nth-child(2) > :nth-child(1) > .form-group > .custom-date-box').type('{downArrow}{enter}')
     }
-
     guestName(){
         cy.xpath("(//span[@title='QA Tester'][normalize-space()='QA Tester'])[1]")
             .should('be.visible')

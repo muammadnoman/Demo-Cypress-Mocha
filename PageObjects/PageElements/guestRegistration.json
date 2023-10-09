@@ -1,0 +1,17 @@
+{
+
+    "GuestRegPageLocators": {
+        "page_heading": "div[class='signup-upper'] h2",
+        "page_instruction": "div[class='signup-upper'] p",
+        "full_name": "(//input[@id='6'])[1]",
+        "select_country": ".iti__selected-flag", 
+        "select_pakistan": "#iti-0__item-pk",
+        "enter_dob": "(//input[@id='7'])[1]",
+        "select_nationality": "(//select[@id='8'])[1]", 
+        "enter_email": "(//input[@id='1'])[1]",
+        "select_gender": "(//select[@id='9'])[1]",
+        "enter_address": "#update-property-address",
+        "enter_zipcode": "(//input[@id='11'])[1]",
+        "submit_button": "button[class='btn btn-primary btn-sm']"
+    }
+}

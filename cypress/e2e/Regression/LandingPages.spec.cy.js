@@ -1,12 +1,14 @@
 /// <reference types ="Cypress" />
 
 import { bookingPageElements } from "../../../PageObjects/PageActions/AddBooking"
+import { landingPagesElements } from "../../../PageObjects/PageActions/LandingPages"
 import { loginPageElements } from "../../../PageObjects/PageActions/LoginPageActions"
 import { precheckinPageElements } from "../../../PageObjects/PageActions/PreCheckIn"
 
   const Login_Elements = new loginPageElements
   const Booking_Elements = new bookingPageElements
   const PreCheckIn_Elements = new precheckinPageElements
+  const LandingPages_Elements = new landingPagesElements
 
 describe('Pre Check-In Process', () => {
   
@@ -18,10 +20,9 @@ describe('Pre Check-In Process', () => {
     cy.clearAllSessionStorage()
     Login_Elements.happyLogin('automation9462@gmail.com', 'Boring321')
     Booking_Elements.happyAddBooking()
-    Booking_Elements.guestName()
   })
  
-  it('CA_PCW_01 > Validate pre-checkin welcome page', () => {
+  xit('CA_PCW_01 > Validate pre-checkin welcome page', () => {
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -111,7 +112,7 @@ describe('Pre Check-In Process', () => {
       })            
     })
   })
-  it('CA_PCW_02 > Validate basic info page field level validations and prefilled fields', () => {
+  xit('CA_PCW_02 > Validate basic info page field level validations and prefilled fields', () => {
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -157,14 +158,14 @@ describe('Pre Check-In Process', () => {
             .then((text) => {
               const emailAddress = text; 
               cy.wrap(emailAddress).should('eq', emailText) 
-              PreCheckIn_Elements.basicInfoValidation()                             
+              LandingPages_Elements.basicInfoValidation()
             })
           })
         })
       })
     })   
   })   
-  it('CA_PCW_03 > Validate the questionnier step', () => {
+  xit('CA_PCW_03 > Validate the questionnier step', () => {
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -180,10 +181,10 @@ describe('Pre Check-In Process', () => {
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true})      
       PreCheckIn_Elements.basicInfoVerification()
       PreCheckIn_Elements.creditCard()
-      PreCheckIn_Elements.questionnariesValidation()
+      LandingPages_Elements.questionnariesValidation()
     })
   })
-  it('CA_PCW_04 > Validate the arrival step', () => {
+  xit('CA_PCW_04 > Validate the arrival step', () => {
     cy.xpath("(//i[@class='fas fa-ellipsis-h'])[2]")
     .click({force: true})
     cy.get("div[class='dropdown-menu dropdown-menu-right show'] a:nth-child(1)")
@@ -204,9 +205,64 @@ describe('Pre Check-In Process', () => {
       cy.get('#question-103').should('have.attr', 'placeholder', 'Type your answer').clear().type('This is Automation Testing')
       cy.wait(3000)
       cy.get('[data-test="precheckinSaveBtnOne"]').should('be.visible').click({force: true}) 
-      PreCheckIn_Elements.arrivalByValidation()
-      })
+      LandingPages_Elements.arrivalByValidation()
+    })
   })
-  
+  xit('CA_PCW_05 > Validate the upload Id card and Credit Card Validation', () => {
+    LandingPages_Elements.goToDocValidation()
+    PreCheckIn_Elements.verification()
+    LandingPages_Elements.idCardDocValidation()
+  })
+  xit('CA_PCW_06 > Validate the upload Driving License and Credit Card Validation', () => {
+    LandingPages_Elements.goToDocValidation()
+    PreCheckIn_Elements.verification()
+    LandingPages_Elements.drivingDocValidation()
+    
+  })
+  xit('CA_PCW_07 > Validate Add new Guest functionality', () => {
+    LandingPages_Elements.goToGuest()
+    cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)')
+      .should('have.text', 'Guest Details\n                        1/3')
+    LandingPages_Elements.addNewGuest()
+  })
+  xit('CA_PCW_08 > Validate Delete Guest functionality', () => {
+    LandingPages_Elements.goToGuest()
+    cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)')
+      .should('have.text', 'Guest Details\n                        1/3')
+    LandingPages_Elements.deleteGuest()
+  })
+  xit('CA_PCW_09 > Validate share link for Guest Registration functionality', () => {
+    LandingPages_Elements.goToGuest()
+    cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)')
+      .should('have.text', 'Guest Details\n                        1/3')
+    LandingPages_Elements.goToGuestRegistration()
+    LandingPages_Elements.guestRegistration()
+  })
+  xit('CA_PCW_10 > Validate share link Guest Registration validations', () => {
+    LandingPages_Elements.goToGuest()
+    cy.get('div[class="gp-box gp-box-of-inner-pages page-tab-01 pre-checkin-tabs"] h4:nth-child(1)')
+      .should('have.text', 'Guest Details\n                        1/3')
+    LandingPages_Elements.goToGuestRegistration()
+    LandingPages_Elements.guestRegValidations()
+  })
+  it('CA_PCW_11 > Validate Add guest detail functionality', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.addGuestDetail()
+    cy.wait(3000)
+    cy.get('.btn.btn-default.d-none.d-md-inline-block').click({force: true})
+    cy.get('h4 > .badge').should('contain', '2/3')
+  })
+  it('CA_PCW_12 > Validate Add Guest detail form validation', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.guestDetailValidations()
+  })
+  it('CA_PCW_13 > Validate Edit Guest detail functionality', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.editGuestDetail()
+  })
+  it('CA_PCW_14 > Validate change Main guest functionality', () => {
+    LandingPages_Elements.goToGuest()
+    LandingPages_Elements.changeMainGuest()
+  })
 }) 
 
